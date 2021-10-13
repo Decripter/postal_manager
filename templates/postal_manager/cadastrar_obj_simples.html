@@ -1,0 +1,36 @@
+
+{% extends 'postal_manager/template.html' %}
+
+
+{% block vazio %}
+
+<script>
+    function salvarPreferencias(){
+        tipo_objeto = document.getElementById('id_classe_obj').value;
+        sessionStorage.setItem('tipo_obj', tipo_objeto);
+
+    }
+    function focus(){
+        document.getElementById("id_destinatario").focus();
+        document.getElementById('id_classe_obj').value = sessionStorage.getItem('tipo_obj');
+
+    }
+
+</script>
+
+
+
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" onclick="salvarPreferencias()" class="btn btn-primary">Salvar</button>
+        </form>
+
+    {% endblock %}
+
+
+{% block cadastro_objetos_simples %}
+{% endblock %}
+
+

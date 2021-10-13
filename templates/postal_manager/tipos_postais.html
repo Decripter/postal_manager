@@ -1,0 +1,28 @@
+
+{% extends 'postal_manager/template.html' %}
+
+{% block script %}
+<script>
+      function focus(){
+        document.getElementById("id_classe_obj").focus();
+    }
+</script>
+{% endblock %}
+{% block tabela_objetos %}
+{% endblock %}
+
+    {% block vazio %}
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+
+    {% endblock %}
+
+
+{% block cadastro_objetos_simples %}
+{% endblock %}
+
+

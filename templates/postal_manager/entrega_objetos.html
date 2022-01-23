@@ -11,14 +11,17 @@
      var resultado_da_pesquisa = $('#myTable tr:visible').length;
 
       if (resultado_da_pesquisa == 0){
+        document.getElementById("mostrador-quantidade-objetos").style.color="#FF0000";
         document.getElementById("mostrador-quantidade-objetos").innerHTML = "Nenhum Objeto Encontrado";
 
       }
       else if (resultado_da_pesquisa > 1){
+        document.getElementById("mostrador-quantidade-objetos").style.color="#228B22";  
       document.getElementById("mostrador-quantidade-objetos").innerHTML = resultado_da_pesquisa + " Objetos Encontrados";
 
       }
       else if (resultado_da_pesquisa == 1) {
+        document.getElementById("mostrador-quantidade-objetos").style.color="#228B22";
         document.getElementById("mostrador-quantidade-objetos").innerHTML = resultado_da_pesquisa + " Objeto Encontrado";
     
       }
@@ -69,7 +72,7 @@ $(document).ready(function(){
               <tr>
                 <th scope="col" style="width: 90px;">C&oacutedigo</th>
                 <th scope="col" >Nome</th>
-                <th scope="col">Tipo Postal</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Data de Cadastro</th>
                 <th scope="col">Vencimento</th>
                 <th scope="col" ></th>

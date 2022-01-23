@@ -11,14 +11,17 @@
      var resultado_da_pesquisa = $('#myTable tr:visible').length;
 
       if (resultado_da_pesquisa == 0){
+        document.getElementById("mostrador-quantidade-objetos").style.color="#228B22";
         document.getElementById("mostrador-quantidade-objetos").innerHTML = "Nenhum Objeto Vencido Encontrado!";
 
       }
       else if (resultado_da_pesquisa > 1){
+        document.getElementById("mostrador-quantidade-objetos").style.color="#FF0000";
       document.getElementById("mostrador-quantidade-objetos").innerHTML = resultado_da_pesquisa + " Objetos encontrados";
 
       }
       else if (resultado_da_pesquisa == 1) {
+        document.getElementById("mostrador-quantidade-objetos").style.color="#FF0000";
         document.getElementById("mostrador-quantidade-objetos").innerHTML = resultado_da_pesquisa + " Objeto encontrado";
     
       }
@@ -66,7 +69,7 @@ $(document).ready(function(){
               <tr>
                 <th scope="col" style="width: 90px;">C&oacutedigo</th>
                 <th scope="col" >Nome</th>
-                <th scope="col">Tipo Postal</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Data de Cadastro</th>
                 <th scope="col">Vencimento</th>
                 <th scope="col" ></th>
@@ -95,7 +98,7 @@ $(document).ready(function(){
 
                     <td>{{lista.data_inclusao}}</td> <!-- DATA DE CADASRTO -->
                     <td>{{lista.data_inclusao }}</td> <!-- DATA DE VENCIMENTO -->
-                    <td class="text-center"><a href="{% url 'entrega_objetos' %}{{lista.id}}/entregar" class="btn btn-danger " title="Entregar objdeto de {{lista.destinatario}}">↓</a></td> <!-- BTN ENTREGAR -->
+                    <td class="text-center"><a href="{% url 'entrega_objetos' %}{{lista.id}}/devolver" class="btn btn-danger " title="Entregar objdeto de {{lista.destinatario}}">↓</a></td> <!-- BTN ENTREGAR -->
                   
                 </tr>
                 

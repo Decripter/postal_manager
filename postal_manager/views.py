@@ -43,3 +43,8 @@ class Obj_vencidos(ListView):
 class Entrega_objetoView(DeleteView):
     model = Objetos_db
     success_url = reverse_lazy("entrega_objetos")
+
+
+class Devolve_objetoView(DeleteView):
+    model = Objetos_db
+    success_url = reverse_lazy("obj_vencidos")

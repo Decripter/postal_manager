@@ -21,8 +21,11 @@ class Cad_obj_simples(CreateView):
     success_url = reverse_lazy("cad_obj_simp")
 
 
-class Cad_obj_qual(TemplateView):
+class Cad_obj_qual(CreateView):
+    model = Objetos_db
+    fields = ["destinatario", "classe_obj"]
     template_name = "postal_manager/cadastrar_obj_qual.html"
+    success_url = reverse_lazy("cad_obj_qual")
 
 
 class Tipos_postais(CreateView):
@@ -32,8 +35,8 @@ class Tipos_postais(CreateView):
     success_url = reverse_lazy("cad_obj_simp")
 
 
-class Obj_vencidos(TemplateView):
-
+class Obj_vencidos(ListView):
+    model = Objetos_db
     template_name = "postal_manager/obj_vencidos.html"
 
 

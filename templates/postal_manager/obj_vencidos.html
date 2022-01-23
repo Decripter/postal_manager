@@ -3,16 +3,129 @@
 
 
 
+{% block script %}
 
-{% block vazio %}
-<h1 onload="">
+<script>
 
-    Objetos vencidos
+    function contar_linhas_da_tabela(){
+     var resultado_da_pesquisa = $('#myTable tr:visible').length;
+
+      if (resultado_da_pesquisa == 0){
+        document.getElementById("mostrador-quantidade-objetos").innerHTML = "Nenhum Objeto Vencido Encontrado!";
+
+      }
+      else if (resultado_da_pesquisa > 1){
+      document.getElementById("mostrador-quantidade-objetos").innerHTML = resultado_da_pesquisa + " Objetos encontrados";
+
+      }
+      else if (resultado_da_pesquisa == 1) {
+        document.getElementById("mostrador-quantidade-objetos").innerHTML = resultado_da_pesquisa + " Objeto encontrado";
     
+      }
+    }
+    
+    function focus(){
 
-</h1>
+        contar_linhas_da_tabela()
+    }
+
+jQuery(function($){
+
+
+$(document).ready(function(){
+  $("#campo_busca").on("keyup", function() {
+    
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      contar_linhas_da_tabela();
+
+    });
+  });
+});
+});
+
+
+
+    </script>
 {% endblock %}
 
+{% block vazio %}
+
+<div class="container" >
+    <div class="card">
+      <h5 class="card-header">Devolução de Objetos Vencidos</h5>
+     <div class="container">
+         
+     </div>
+      <div class="card-body">
+  
+        <div class="container ">
+          <table  class="table text-center table-hover table-responsive  container" id="tabble">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col" style="width: 90px;">C&oacutedigo</th>
+                <th scope="col" >Nome</th>
+                <th scope="col">Tipo Postal</th>
+                <th scope="col">Data de Cadastro</th>
+                <th scope="col">Vencimento</th>
+                <th scope="col" ></th>
+  
+              </tr>
+            </thead>
+            <tbody id="myTable">
+              
+                {% for lista in object_list %}
+                <tr>
+
+                    
+                    
+                    <th scope="row">{{lista.id}}</th> <!-- ID -->
+                    <td>{{lista.destinatario}}</td> <!-- DESTINATÁRIO -->
+
+                    {% if lista.classe_obj.nome_tipo == "SEDEX"%}
+                        <td class="text-warning">
+                    {% elif lista.classe_obj.nome_tipo == "PAC" %}
+                        <td class="text-primary">
+                    {% elif lista.classe_obj.nome_tipo == "Simples" %}
+                        <td class="text-success">
+                    {% elif lista.classe_obj.nome_tipo == "Registrado" %}
+                            <td class="text-info">
+                    {% endif %}{{lista.classe_obj.nome_tipo}}</td> <!-- TIPO POSTAL -->
+
+                    <td>{{lista.data_inclusao}}</td> <!-- DATA DE CADASRTO -->
+                    <td>{{lista.data_inclusao }}</td> <!-- DATA DE VENCIMENTO -->
+                    <td class="text-center"><a href="{% url 'entrega_objetos' %}{{lista.id}}/entregar" class="btn btn-danger " title="Entregar objdeto de {{lista.destinatario}}">↓</a></td> <!-- BTN ENTREGAR -->
+                  
+                </tr>
+                
+                {% empty %}
+
+
+                {% endfor %}
+             
+              
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <div class="card-footer text-center">
+          <div class="container algin-middle">
+            <div class="row align-middle">
+              
+                <div class="text-success align-middle">
+                  <span id="mostrador-quantidade-objetos" class="align-middle  text-sm"></span>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
 
 {% block cadastro_objetos_simples %}
 {% endblock %}

@@ -19,7 +19,6 @@ from django.urls import include, path
 import postal_manager
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('postal_manager.urls'))
-
+    path("admin/", admin.site.urls),
+    path("", include("postal_manager.urls")),
 ]

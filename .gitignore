@@ -3,3 +3,4 @@ venv/
 py_cartas/__pycache__/
 postal_manager/__pycache__/
 postal_manager/migrations/__pycache__/
+db.sqlite3

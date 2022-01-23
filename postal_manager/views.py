@@ -1,4 +1,4 @@
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
@@ -35,3 +35,8 @@ class Tipos_postais(CreateView):
 class Obj_vencidos(TemplateView):
 
     template_name = "postal_manager/obj_vencidos.html"
+
+
+class Entrega_objetoView(DeleteView):
+    model = Objetos_db
+    success_url = reverse_lazy("entrega_objetos")

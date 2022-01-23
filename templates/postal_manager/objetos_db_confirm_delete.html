@@ -1,0 +1,16 @@
+<body onload="show_alert()">
+
+     <script>
+        function show_alert() {
+            if(!confirm("Confirma a entrega do objeto de {{ object.destinatario }}?")) {
+                history.back();
+            }
+            document.forms['delete-form'].submit();
+          } 
+        
+     </script>
+    
+     <form method="post" name="delete-form">{% csrf_token %}
+
+    </form>
+</body>

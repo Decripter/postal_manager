@@ -9,4 +9,5 @@ urlpatterns = [
     path("cadastro-qualificados/", Cad_obj_qual.as_view(), name="cad_obj_qual"),
     path("tipos-postais/", Tipos_postais.as_view(), name="tipos_postais"),
     path("objetos-vencidos/", Obj_vencidos.as_view(), name="obj_vencidos"),
+    path("entrega-objetos/<pk>/entregar", Entrega_objetoView.as_view()),
 ]
